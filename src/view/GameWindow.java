@@ -184,10 +184,10 @@ public class GameWindow extends GameFrame{
 			}
 		}
 		arg0.drawImage(player.getCurrentSprite(), playerPosition.x, playerPosition.y, null);
-		if(!enemy1Defeated) arg0.drawImage(enemy1.getSprite(), enemyPosition1.x, enemyPosition1.y, null);
-		if(!enemy2Defeated) arg0.drawImage(enemy2.getSprite(), enemyPosition2.x, enemyPosition2.y, null);
-		if(!enemy3Defeated) arg0.drawImage(enemy3.getSprite(), enemyPosition3.x, enemyPosition3.y, null);
-		if(!enemy4Defeated) arg0.drawImage(enemy4.getSprite(), enemyPosition4.x, enemyPosition4.y, null);
+		//if(!enemy1Defeated) arg0.drawImage(enemy1.getSprite(), enemyPosition1.x, enemyPosition1.y, null);
+		//if(!enemy2Defeated) arg0.drawImage(enemy2.getSprite(), enemyPosition2.x, enemyPosition2.y, null);
+		//if(!enemy3Defeated) arg0.drawImage(enemy3.getSprite(), enemyPosition3.x, enemyPosition3.y, null);
+		//if(!enemy4Defeated) arg0.drawImage(enemy4.getSprite(), enemyPosition4.x, enemyPosition4.y, null);
 		}
 		else{
 			//Battle Screen

@@ -1,9 +1,13 @@
 package model;
 
 import java.awt.image.BufferedImage;
+import java.lang.reflect.Array;
 import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
+
+import rafgfxlib.Util;
 
 public class Player {
 	private int HP;
@@ -54,7 +58,9 @@ public class Player {
 		items=new ArrayList<>();
 		attacks=new ArrayList<>();
 		sprites=new ArrayList<>();
-		currentSprite=null;
+		BufferedImage[] spriteQueue = Util.cutTiles1D(3, 4, Util.loadImage("resources/sofija.png"));
+		for(int i=0;i<spriteQueue.length-1;i++) sprites.add(spriteQueue[i]);
+		currentSprite=sprites.get(0);
 	}
 	public void doAttack(Attack attack, Enemy enemy){
 		Random r=new Random();
