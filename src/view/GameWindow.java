@@ -22,8 +22,8 @@ public class GameWindow extends GameFrame{
 	private Point mouseWorld = new Point();
 	private Point zeroPoint = new Point(0, 0);
 	
-	private int mapW = 100;
-	private int mapH = 100;
+	private int mapW = 30;
+	private int mapH = 30;
 	
 	private int camX = 0;
 	private int camY = 0;
@@ -40,8 +40,16 @@ public class GameWindow extends GameFrame{
 	private Enemy enemy3;
 	private Enemy enemy4;
 	
+	private Point enemyPosition1;
+	private Point enemyPosition2;
+	private Point enemyPosition3;
+	private Point enemyPosition4;
+	
 	private boolean inBattle=false;
 	private boolean bossEnabled=false;
+	
+	private Enemy boss;
+	private Point bossPosition=new Point(500, 375);
 	
 	private Point playerPosition=new Point(500, 375);
 
@@ -200,7 +208,28 @@ public class GameWindow extends GameFrame{
 			else if(player.getSprites().indexOf(player.getCurrentSprite())==10) player.setCurrentSprite(player.getSprites().get(11));
 			else player.setCurrentSprite(player.getSprites().get(9));
 		}
-
+		if(isKeyDown(KeyEvent.VK_SPACE)){
+			if(bossEnabled){
+				if(Math.abs(playerPosition.x-bossPosition.x)<10 && Math.abs(playerPosition.y-bossPosition.y)<10){
+					inBattle=true;
+					
+				}
+			}
+				else{
+					if(Math.abs(playerPosition.x-bossPosition.x)<10 && Math.abs(playerPosition.y-bossPosition.y)<10){
+						inBattle=true;
+				}
+					if(Math.abs(playerPosition.x-bossPosition.x)<10 && Math.abs(playerPosition.y-bossPosition.y)<10){
+						inBattle=true;
+			}
+					if(Math.abs(playerPosition.x-bossPosition.x)<10 && Math.abs(playerPosition.y-bossPosition.y)<10){
+						inBattle=true;
+		}
+					if(Math.abs(playerPosition.x-bossPosition.x)<10 && Math.abs(playerPosition.y-bossPosition.y)<10){
+						inBattle=true;
+					}
+				}
+	
 		mousePoint.x = getMouseX();
 		mousePoint.y = getMouseY();
 		
@@ -219,6 +248,9 @@ public class GameWindow extends GameFrame{
 			
 		}
 	}
+	}
+	
+	// Battle controls **
 	}
 
 }
