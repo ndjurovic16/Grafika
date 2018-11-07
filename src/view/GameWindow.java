@@ -9,6 +9,7 @@ import java.util.Random;
 
 import rafgfxlib.GameFrame;
 import rafgfxlib.Util;
+import model.Attack;
 import model.Enemy;
 import model.Player;
 import model.Tile;
@@ -45,7 +46,17 @@ public class GameWindow extends GameFrame{
 	private Point enemyPosition3;
 	private Point enemyPosition4;
 	
+	private boolean enemy1Defeated=false;
+	private boolean enemy2Defeated=false;
+	private boolean enemy3Defeated=false;
+	private boolean enemy4Defeated=false;
+	
 	private boolean inBattle=false;
+	private boolean attackAnimation=false;
+	private boolean toBattle=false;
+	private boolean toMap=false;
+	
+	
 	private boolean bossEnabled=false;
 	
 	private Enemy boss;
@@ -58,7 +69,7 @@ public class GameWindow extends GameFrame{
 		// TODO Auto-generated constructor stub
 		setUpdateRate(60);
 		map=new Map();
-		player=new Player(100, "Cucolio The Great", 0);
+		player=new Player(100, "Coka Master Baker", 0);
 		// Set player Sprite array, (0,1,2) UP (3,4,5) LEFT (6,7,8) RIGHT (9,10,11) DOWN
 		/* Generate Enemies 
 		 * 1 -> Earth elemental
@@ -67,6 +78,14 @@ public class GameWindow extends GameFrame{
 		 * 4 -> Air elemental
 		 * enemy1=new Enemy(100,"");
 		 */
+		enemy1=new Enemy(100,"Earth Elemental",new Attack(50, 100),35);
+		enemy1.setSprite(null); //TODO: Add sprite
+		enemy2=new Enemy(100,"Water Elemental",new Attack(50, 50),25);
+		enemy2.setSprite(null); //TODO: Add sprite
+		enemy3=new Enemy(80,"Fire Elemental",new Attack(85, 25),0);
+		enemy3.setSprite(null); //TODO: Add sprite
+		enemy4=new Enemy(100,"Air Elemental",new Attack(40, 50),15);
+		enemy4.setSprite(null); //TODO: Add sprite
 		
 		startThread();
 	}
@@ -165,6 +184,10 @@ public class GameWindow extends GameFrame{
 			}
 		}
 		arg0.drawImage(player.getCurrentSprite(), playerPosition.x, playerPosition.y, null);
+		if(!enemy1Defeated) arg0.drawImage(enemy1.getSprite(), enemyPosition1.x, enemyPosition1.y, null);
+		if(!enemy2Defeated) arg0.drawImage(enemy2.getSprite(), enemyPosition2.x, enemyPosition2.y, null);
+		if(!enemy3Defeated) arg0.drawImage(enemy3.getSprite(), enemyPosition3.x, enemyPosition3.y, null);
+		if(!enemy4Defeated) arg0.drawImage(enemy4.getSprite(), enemyPosition4.x, enemyPosition4.y, null);
 		}
 		else{
 			//Battle Screen
@@ -216,21 +239,29 @@ public class GameWindow extends GameFrame{
 			if(bossEnabled){
 				if(Math.abs(playerPosition.x-bossPosition.x)<10 && Math.abs(playerPosition.y-bossPosition.y)<10){
 					inBattle=true;
-					
+					currentEnemy=boss;
 				}
 			}
 				else{
-					if(Math.abs(playerPosition.x-bossPosition.x)<10 && Math.abs(playerPosition.y-bossPosition.y)<10){
+					if(!enemy1Defeated)
+					if(Math.abs(playerPosition.x-enemyPosition1.x)<10 && Math.abs(playerPosition.y-enemyPosition1.y)<10){
 						inBattle=true;
+						currentEnemy=enemy1;
 				}
-					if(Math.abs(playerPosition.x-bossPosition.x)<10 && Math.abs(playerPosition.y-bossPosition.y)<10){
+					if(enemy2Defeated)
+					if(Math.abs(playerPosition.x-enemyPosition2.x)<10 && Math.abs(playerPosition.y-enemyPosition2.y)<10){
 						inBattle=true;
+						currentEnemy=enemy2;
 			}
-					if(Math.abs(playerPosition.x-bossPosition.x)<10 && Math.abs(playerPosition.y-bossPosition.y)<10){
+					if(enemy3Defeated)
+					if(Math.abs(playerPosition.x-enemyPosition3.x)<10 && Math.abs(playerPosition.y-enemyPosition3.y)<10){
 						inBattle=true;
+						currentEnemy=enemy3;
 		}
-					if(Math.abs(playerPosition.x-bossPosition.x)<10 && Math.abs(playerPosition.y-bossPosition.y)<10){
+					if(enemy4Defeated)
+					if(Math.abs(playerPosition.x-enemyPosition4.x)<10 && Math.abs(playerPosition.y-enemyPosition4.y)<10){
 						inBattle=true;
+						currentEnemy=enemy4;
 					}
 				}
 	
@@ -249,7 +280,9 @@ public class GameWindow extends GameFrame{
 	}
 	else{
 		if(isKeyDown(KeyEvent.VK_ENTER)){
-			
+			player.doAttack(player.getAttacks().get(0), currentEnemy);
+			if(currentEnemy.getHP()<=0) inBattle=false;
+			else currentEnemy.doAttack(currentEnemy.getAttacks().get(0), player);
 		}
 	}
 	}

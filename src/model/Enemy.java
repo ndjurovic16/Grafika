@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,6 +9,7 @@ public class Enemy {
 	private String name;
 	private ArrayList<Attack> attacks;
 	private int defence;
+	private BufferedImage sprite;
 	public Enemy() {
 		HP=100;
 		name="untitled";
@@ -15,11 +17,12 @@ public class Enemy {
 		attacks.add(new Attack(100,100));
 		defence=0;
 	}
-	public Enemy(int hP, String name, ArrayList<Attack> attacks, int defence) {
+	public Enemy(int hP, String name, Attack attacks, int defence) {
 		super();
 		HP = hP;
 		this.name = name;
-		this.attacks = attacks;
+		this.attacks=new ArrayList<>();
+		this.attacks.add(attacks);
 		this.defence = defence;
 	}
 	public void doAttack(Attack attack,Player player){
@@ -34,6 +37,12 @@ public class Enemy {
 					player.setHP(player.getHP()-(attack.getDMG()-player.getDefence()));
 			}
 		}
+	}
+	public BufferedImage getSprite() {
+		return sprite;
+	}
+	public void setSprite(BufferedImage sprite) {
+		this.sprite = sprite;
 	}
 	public int getHP() {
 		return HP;
