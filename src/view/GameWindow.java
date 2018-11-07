@@ -255,6 +255,7 @@ public class GameWindow extends GameFrame{
 	}
 	
 	// Battle controls **
+	// Loud noises
 	}
 
 }
