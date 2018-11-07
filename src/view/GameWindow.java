@@ -159,7 +159,8 @@ public class GameWindow extends GameFrame{
 				
 				projectToScreen(tileWorld, tileView);
 				
-				arg0.drawImage(map.getTileMatrix[X][Y].image, tileView.x - TILE_W / 2, tileView.y, null);
+				arg0.drawImage(map.getImage(map.getTileMatrix()[X][Y]), tileView.x - TILE_W / 2, tileView.y, null);
+				//System.out.println(map.getImage(map.getTileMatrix()[X][Y]));
 				
 			}
 		}
@@ -179,34 +180,37 @@ public class GameWindow extends GameFrame{
 			camX -= 10;
 			playerPosition.x-=10;
 			//Set this shit on a timer so that it doesn't spaz out
-			if(player.getSprites().indexOf(player.getCurrentSprite())==3) player.setCurrentSprite(player.getSprites().get(4));
+			/*if(player.getSprites().indexOf(player.getCurrentSprite())==3) player.setCurrentSprite(player.getSprites().get(4));
 			else if(player.getSprites().indexOf(player.getCurrentSprite())==4) player.setCurrentSprite(player.getSprites().get(5));
 			else player.setCurrentSprite(player.getSprites().get(3));
-			
+			*/
 		}
 		if(isKeyDown(KeyEvent.VK_RIGHT)){
 			camX += 10;
 			playerPosition.x+=10;
 			//Set this shit on a timer so that it doesn't spaz out
-			if(player.getSprites().indexOf(player.getCurrentSprite())==6) player.setCurrentSprite(player.getSprites().get(7));
+			/*if(player.getSprites().indexOf(player.getCurrentSprite())==6) player.setCurrentSprite(player.getSprites().get(7));
 			else if(player.getSprites().indexOf(player.getCurrentSprite())==7) player.setCurrentSprite(player.getSprites().get(8));
 			else player.setCurrentSprite(player.getSprites().get(6));
+			*/
 		}
 		if(isKeyDown(KeyEvent.VK_UP)) {
 			camY -= 10;
 			playerPosition.y-=10;
 			//Set this shit on a timer so that it doesn't spaz out
-			if(player.getSprites().indexOf(player.getCurrentSprite())==0) player.setCurrentSprite(player.getSprites().get(1));
+			/*if(player.getSprites().indexOf(player.getCurrentSprite())==0) player.setCurrentSprite(player.getSprites().get(1));
 			else if(player.getSprites().indexOf(player.getCurrentSprite())==1) player.setCurrentSprite(player.getSprites().get(2));
 			else player.setCurrentSprite(player.getSprites().get(0));
+			*/
 		}
 		if(isKeyDown(KeyEvent.VK_DOWN)) {
 			camY += 10;
 			playerPosition.y+=10;
 			//Set this shit on a timer so that it doesn't spaz out
-			if(player.getSprites().indexOf(player.getCurrentSprite())==9) player.setCurrentSprite(player.getSprites().get(10));
+			/*if(player.getSprites().indexOf(player.getCurrentSprite())==9) player.setCurrentSprite(player.getSprites().get(10));
 			else if(player.getSprites().indexOf(player.getCurrentSprite())==10) player.setCurrentSprite(player.getSprites().get(11));
 			else player.setCurrentSprite(player.getSprites().get(9));
+			*/
 		}
 		if(isKeyDown(KeyEvent.VK_SPACE)){
 			if(bossEnabled){
