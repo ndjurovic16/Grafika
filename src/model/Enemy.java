@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
@@ -10,6 +11,8 @@ public class Enemy {
 	private ArrayList<Attack> attacks;
 	private int defence;
 	private BufferedImage sprite;
+	private BufferedImage battleImage;
+	private Color color;
 	public Enemy() {
 		HP=100;
 		name="untitled";
@@ -68,6 +71,20 @@ public class Enemy {
 	public void setDefence(int defence) {
 		this.defence = defence;
 	}
+	public BufferedImage getBattleImage() {
+		return battleImage;
+	}
+	public void setBattleImage(BufferedImage battleImage) {
+		this.battleImage = battleImage;
+	}
+	public Color getColor() {
+		return color;
+	}
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	
+	
 	
 	
 	
